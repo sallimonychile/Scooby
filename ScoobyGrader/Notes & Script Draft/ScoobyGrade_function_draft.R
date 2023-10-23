@@ -1,4 +1,4 @@
-formated<- read.csv("BIOL431 (1).csv", header=TRUE)
+formatted<- read.csv("BIOL431 (1).csv", header=TRUE)
 View(formated)
 
 ScoobyGrade= function(data,assignment, scoobCharac){
@@ -16,6 +16,6 @@ ScoobyGrade= function(data,assignment, scoobCharac){
   }
 }
 
-ScoobyGrade(formated, "Final.exam", "Fred")
+ScoobyGrade(formatted, "Final.exam", "Fred")
 
 
