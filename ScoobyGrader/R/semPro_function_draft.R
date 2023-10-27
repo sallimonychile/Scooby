@@ -8,10 +8,10 @@
 
 semPro= function(data, student){
   
-  row <- subset(data, data[["Student"]] == student)
+  Grade <- subset(data, data[["Student"]] == student)
   
-  row <- unlist(row[,3:17])
-  plot(row, type = "p", lty=2, col='plum')
+  Grade <- unlist(Grade[,3:17])
+  plot(Grade, type = "l", lty=2, xlab= "Assignment #", col='plum')
   return(plot)
 }
 

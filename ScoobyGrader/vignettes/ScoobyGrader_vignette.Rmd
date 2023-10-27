@@ -35,7 +35,48 @@ weighted_grade= function(data, exam1, exam2, final, lab, students, prbSet){
 
 ```
 
-Let's look at an example
+Let's look at an example. *Note* that we are telling our function the rows of students to do the calculation for and which columns of problem sets to average for our overall calculation.
 ```{r}
 weighted_grade(classScores, "Exam.1", "Exam.2", "Final.exam", "Lab", students=1:166, prbSet=7:18)
 ```
+Next, let's look at our students progess function.
+```{r}
+semPro= function(data, student){
+  
+  Grade <- subset(data, data[["Student"]] == student)
+  
+  Grade <- unlist(Grade[,3:17])
+  plot(Grade, type = "l", lty=2, xlab= "Assignment #", col='plum')
+  return(plot)
+}
+```
+
+We will insert the dataset being examined and the student whose progress we want to track. Make sure to copy the name exactly as it's written in the dataset.
+```{r}
+semPro(classScores, "Abreu, Jose")
+```
+
+Our final, and favorite!, function is ScoobyGrade(). This is a simple plotting function that shows the class distributiton of a single assignment using the color palette of a specific Scooby Doo character. Simply specify which dataset to use, the assignment you'd like to plot, and the color scheme of one character, shown below.
+```{r}
+ScoobyGrade= function(data, assignment, scoobCharac){
+ 
+  if (scoobCharac=="Shaggy"){
+    hist(data[ ,assignment],xlim= c(50,100), main= "Grade Distribution", xlab= "Grade", ylab= "# of Students", col=c("olivedrab","tomato4"), border= "black")
+  } else if (scoobCharac=="Fred"){
+    hist(data[ ,assignment],xlim= c(50,100), main= "Grade Distribution", xlab= "Grade", ylab= "# of Students", col=c("white", "deepskyblue3"), border= "orange2")
+  } else if (scoobCharac=="Velma"){
+    hist(data[ ,assignment],xlim= c(50,100), main= "Grade Distribution", xlab= "Grade", ylab= "# of Students", col="orange1", border= "firebrick3")
+  } else if (scoobCharac=="Daphne"){
+    hist(data[ ,assignment],xlim= c(50,100), main= "Grade Distribution", xlab= "Grade", ylab= "# of Students", col=c("plum4", "thistle"), border= "olivedrab2")
+  } else if (scoobCharac=="Scooby"){
+    hist(data[ ,assignment], xlim= c(50,100), main= "Grade Distribution", xlab= "Grade", ylab= "# of Students", col=c("tan3", "black"), border= "turquoise3")
+  }
+}
+```
+
+Let's look at the Scooby plot below.
+```{r}
+ScoobyGrade(classScores, "Final.exam", "Scooby")
+```
+
+As long as all headers and student names are spelled exactly, there should be no issues using this package. 

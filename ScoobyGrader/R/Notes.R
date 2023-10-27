@@ -3,4 +3,6 @@
 #student progress is to see progression of grades through semester
 
 
-use_vignette("ScoobyGrader_vignette")
+
+
+install("ScoobyGrader", build_vignettes = TRUE)

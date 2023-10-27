@@ -23,5 +23,5 @@ ScoobyGrade= function(data, assignment, scoobCharac){
   }
 }
 
-ScoobyGrade(classScores, "Final.exam", "Fred")
+ScoobyGrade(classScores, "Final.exam", "Scooby")
 
