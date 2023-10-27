@@ -2,7 +2,5 @@
 #functions include: weighted class score, plot distribution of test scores(hist of percent), and percentage question wrong
 #student progress is to see progression of grades through semester
 
-create("ScoobyGrader",
-       rstudio=FALSE,
-       roxygen=TRUE,
-       open=FALSE)
+
+use_vignette("ScoobyGrader_vignette")

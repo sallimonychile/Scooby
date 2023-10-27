@@ -1,0 +1,41 @@
+---
+title: "ScoobyGrader_vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{ScoobyGrader_vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+Welcome to package ScoobyGrader! This package is designed to help graders visualize the score distribution of a particular assignment, as well as make weighted grade calculations fast and simple. Scooby inspiration comes in the form of function ScoobyGrade(), where the user has the option to choose from all 5 crime fighters to choose a color palette for an assignment's grade distribution. As long as the user has a dataset following the format of the embedded dataset, user should be able to add/drop columns for calculating weighted grades and visualizing an individuals students progress.
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+Load the package.
+```{r setup}
+library(ScoobyGrader)
+```
+
+To get started with this package let's take a look at our first function for calculating weighted grades after the semester, weighted_grade(). Enter your dataset with the first argument in the function. Each corresponding argument is to fill in which assignment you would like to add the calculation. Beware of the percent weight given to each assignment. You will be able to alter the weight and number of assignments within the function. 
+```{r}
+weighted_grade= function(data, exam1, exam2, final, lab, students, prbSet){
+  subSec<- data[students, prbSet]
+  
+  meanie<- apply(subSec,1,FUN=mean)
+  
+  data$meanGrade<- meanie
+  
+  weighted<- ((data[[exam1]] * .2) + (data[[exam2]] * .2) + (data[[final]] * .3) + (data[[lab]] * .2) + (data$meanGrade * .1))
+  data$weightedTotal<- weighted
+  
+  return(data)
+}
+
+```
+
+Let's look at an example
+```{r}
+weighted_grade(classScores, "Exam.1", "Exam.2", "Final.exam", "Lab", students=1:166, prbSet=7:18)
+```
