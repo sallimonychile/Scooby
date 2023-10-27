@@ -15,7 +15,7 @@ semPro= function(data, student){
   return(plot)
 }
 
-semPro(classScores, "Abreu, Jose")
+
 
 
 

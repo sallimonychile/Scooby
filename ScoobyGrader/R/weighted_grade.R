@@ -23,6 +23,4 @@ weighted_grade= function(data, exam1, exam2, final, lab, students, prbSet){
   
   return(data)
 }
-weighted_grade(classScores, "Exam.1", "Exam.2", "Final.exam", "Lab", students=1:166, prbSet=7:18)
 
-data("classScores")
