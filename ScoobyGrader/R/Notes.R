@@ -5,4 +5,4 @@
 
 
 
-install("ScoobyGrader", build_vignettes = TRUE)
+
